@@ -1,0 +1,23 @@
+{
+    "name": "launchdarkly/server-sdk-redis",
+    "description": "Official LaunchDarkly redis integration for the PHP server SDK",
+    "keywords": [
+        "launchdarkly",
+        "launchdarkly php"
+    ],
+    "homepage": "https://github.com/launchdarkly/php-server-sdk-redis",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "LaunchDarkly <team@launchdarkly.com>",
+            "homepage": "http://launchdarkly.com/"
+        }
+    ],
+    "require": {
+        "php": ">=7.3",
+        "launchdarkly/server-sdk": "^4"
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
