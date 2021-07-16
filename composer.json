@@ -1,6 +1,6 @@
 {
     "name": "launchdarkly/server-sdk-redis-phpredis",
-    "description": "LaunchDarkly PHPRedis server SDK integration",
+    "description": "LaunchDarkly PHP SDK Redis integration using the phpredis extension",
     "keywords": [
         "launchdarkly",
         "launchdarkly php"
