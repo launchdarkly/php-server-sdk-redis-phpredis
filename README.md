@@ -25,12 +25,14 @@ php composer.phar install launchdarkly/server-sdk-redis-phpredis --save
 3. In your SDK configuration code, configure the Redis integration:
 
 ```php
-    $fr = LaunchDarkly\Integrations\PHPRedis::featureRequester();
+    $fr = LaunchDarkly\Integrations\PHPRedis::featureRequester([
+        "prefix" => "my-key-prefix"
+    ]);
     $config = [ "feature_requester" => $fr ];
     $client = new LDClient("sdk_key", $config);
 ```
 
-By default, the store will try to connect to a local Redis instance on port 6379 and will prefix all Redis keys with `launchdarkly`. You may specify an alternate configuration as described in the API documentation for `PHPRedis::featureRequester`.
+By default, the store will try to connect to a local Redis instance on port 6379. You may specify an alternate configuration as described in the API documentation for `PHPRedis::featureRequester`. Make sure the `prefix` option corresponds to the key prefix that is being used by the Relay Proxy.
 
 ## About LaunchDarkly
 
