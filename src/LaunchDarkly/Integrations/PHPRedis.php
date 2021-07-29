@@ -1,6 +1,8 @@
 <?php
 namespace LaunchDarkly\Integrations;
 
+use LaunchDarkly\Integrations\Impl\PHPRedisFeatureRequester;
+
 class PHPRedis
 {
     /**
@@ -29,7 +31,7 @@ class PHPRedis
     public static function featureRequester($options = array())
     {
         return function ($baseUri, $sdkKey, $baseOptions) use ($options) {
-            return new Impl\PHPRedisFeatureRequester($baseUri, $sdkKey, array_merge($baseOptions, $options));
+            return new PHPRedisFeatureRequester($baseUri, $sdkKey, array_merge($baseOptions, $options));
         };
     }
 }
