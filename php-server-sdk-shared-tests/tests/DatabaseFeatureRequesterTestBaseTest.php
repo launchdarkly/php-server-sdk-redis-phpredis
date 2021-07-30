@@ -94,22 +94,27 @@ class DatabaseFeatureRequesterTestBaseTest extends DatabaseFeatureRequesterTestB
 {
 	const DEFAULT_PREFIX = 'defaultprefix';
 
-	protected function clearExistingData($prefix): void
+	protected function clearExistingData(?string $prefix): void
     {
     	FakeDatabase::$data[$this->actualPrefix($prefix)] = [ 'features' => [], 'segments' => [] ];
     }
 
-	protected function makeRequester($prefix): FeatureRequester
+	protected function makeRequester(?string $prefix): FeatureRequester
     {
     	return new FakeDatabaseFeatureRequester($this->actualPrefix($prefix));
     }
 
-    protected function putSerializedItem($prefix, $namespace, $key, $version, $json): void
+    protected function putSerializedItem(
+    	?string $prefix,
+    	string $namespace,
+    	string $key,
+    	int $version,
+    	string $json): void
     {
     	FakeDatabase::putSerializedItem($this->actualPrefix($prefix), $namespace, $key, $json);
     }
 
-    private function actualPrefix($prefix): string
+    private function actualPrefix(?string $prefix): string
     {
     	return ($prefix === null || $prefix === '') ? self::DEFAULT_PREFIX : $prefix;
     }
