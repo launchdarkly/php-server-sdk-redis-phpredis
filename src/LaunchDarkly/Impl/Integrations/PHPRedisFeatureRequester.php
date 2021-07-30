@@ -16,7 +16,10 @@ class PHPRedisFeatureRequester extends FeatureRequesterBase
     {
         parent::__construct($baseUri, $sdkKey, $options);
 
-        $this->_prefix = $options['redis_prefix'] ?? 'launchdarkly';
+        $this->_prefix = $options['redis_prefix'] ?? null;
+        if ($this->_prefix === null || $this->_prefix === '') {
+            $this->_prefix = 'launchdarkly';
+        }
 
         $client = $this->_options['phpredis_client'] ?? null;
         if ($client instanceof Redis) {
@@ -30,13 +33,13 @@ class PHPRedisFeatureRequester extends FeatureRequesterBase
         }
     }
 
-    protected function readItemString($namespace, $key): ?string
+    protected function readItemString(string $namespace, string $key): ?string
     {
         $redis = $this->getConnection();
         return $redis->hget($namespace, $key);
     }
 
-    protected function readItemStringList($namespace): ?array
+    protected function readItemStringList(string $namespace): ?array
     {
         $redis = $this->getConnection();
         $raw = $redis->hgetall($namespace);
