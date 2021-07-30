@@ -1,0 +1,23 @@
+{
+    "name": "launchdarkly/server-sdk-redis-phpredis",
+    "description": "LaunchDarkly PHP SDK Redis integration using the phpredis extension",
+    "keywords": [
+        "launchdarkly",
+        "launchdarkly php"
+    ],
+    "homepage": "https://github.com/launchdarkly/php-server-sdk-redis-phpredis",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "LaunchDarkly <sdks@launchdarkly.com>",
+            "homepage": "http://www.launchdarkly.com/"
+        }
+    ],
+    "require": {
+        "php": ">=7.3",
+        "launchdarkly/server-sdk": "^4"
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
