@@ -1,7 +1,7 @@
 <?php
 namespace LaunchDarkly\Integrations;
 
-use LaunchDarkly\Integrations\Impl\PHPRedisFeatureRequester;
+use LaunchDarkly\Impl\Integrations\PHPRedisFeatureRequester;
 
 class PHPRedis
 {
