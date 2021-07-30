@@ -27,7 +27,7 @@ jobs:
           command: |
             sudo apt-get -q update
             sudo apt-get -y install php-redis
-            sudo echo "extension=phpredis.so" >> $(php -r 'echo get_cfg_var("cfg_file_path");')
+            echo "extension=redis.so" | sudo tee -a $(php -r 'echo get_cfg_var("cfg_file_path");') >/dev/null
       - run:
           name: install dependencies
           command: composer install --no-progress
