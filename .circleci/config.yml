@@ -25,8 +25,7 @@ jobs:
       - run:
           name: install phpredis
           command: |
-            sudo apt-get -q update
-            sudo apt-get -y install php-redis
+            yes '' | sudo pecl install -f redis || true
             echo "extension=redis.so" | sudo tee -a $(php -r 'echo get_cfg_var("cfg_file_path");') >/dev/null
       - run:
           name: install dependencies
