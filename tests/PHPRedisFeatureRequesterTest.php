@@ -8,15 +8,15 @@ use LaunchDarkly\Integrations\PHPRedis;
 use LaunchDarkly\SharedTest\DatabaseFeatureRequesterTestBase;
 use \Redis;
 
-class RedisFeatureRequesterTest extends DatabaseFeatureRequesterTestBase
+class PHPRedisFeatureRequesterTest extends DatabaseFeatureRequesterTestBase
 {
     /** @var ClientInterface */
     private static $redisClient;
     
     public static function setUpBeforeClass(): void
     {
-        self::$redis = new \Redis();
-        self::$redis->pconnect(
+        self::$redisClient = new \Redis();
+        self::$redisClient->pconnect(
             'localhost',
             6379,
             null,
