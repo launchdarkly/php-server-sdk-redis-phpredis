@@ -30,13 +30,13 @@ class PHPRedisFeatureRequester extends FeatureRequesterBase
         }
     }
 
-    protected function readItemString($namespace, $key)
+    protected function readItemString($namespace, $key): ?string
     {
         $redis = $this->getConnection();
         return $redis->hget($namespace, $key);
     }
 
-    protected function readItemStringList($namespace)
+    protected function readItemStringList($namespace): ?array
     {
         $redis = $this->getConnection();
         $raw = $redis->hgetall($namespace);

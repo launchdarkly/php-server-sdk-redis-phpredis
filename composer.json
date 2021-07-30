@@ -1,4 +1,10 @@
 {
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/launchdarkly/php-server-sdk-private.git"
+        }
+    ],
     "name": "launchdarkly/server-sdk-redis-phpredis",
     "description": "LaunchDarkly PHP SDK Redis integration using the phpredis extension",
     "keywords": [
@@ -15,7 +21,12 @@
     ],
     "require": {
         "php": ">=7.3",
-        "launchdarkly/server-sdk": "^4"
+        "launchdarkly/server-sdk": "4.0.x-dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "LaunchDarkly\\": "src/LaunchDarkly/"
+        }
     },
     "config": {
         "sort-packages": true
