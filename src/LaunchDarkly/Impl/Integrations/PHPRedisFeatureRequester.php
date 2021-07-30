@@ -16,7 +16,10 @@ class PHPRedisFeatureRequester extends FeatureRequesterBase
     {
         parent::__construct($baseUri, $sdkKey, $options);
 
-        $this->_prefix = $options['redis_prefix'] ?? 'launchdarkly';
+        $this->_prefix = $options['redis_prefix'] ?? null;
+        if ($this->_prefix === null || $this->_prefix === '') {
+            $this->_prefix = 'launchdarkly';
+        }
 
         $client = $this->_options['phpredis_client'] ?? null;
         if ($client instanceof Redis) {
