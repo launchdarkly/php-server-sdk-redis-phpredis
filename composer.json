@@ -25,10 +25,10 @@
     ],
     "require": {
         "php": ">=7.3",
-        "launchdarkly/server-sdk": "4.0.x-dev",
-        "launchdarkly/server-sdk-shared-tests": "dev-master"
+        "launchdarkly/server-sdk": "4.0.x-dev"
     },
     "require-dev": {
+        "launchdarkly/server-sdk-shared-tests": "dev-master",
         "phpunit/phpunit": "^9"
     },
     "autoload": {
