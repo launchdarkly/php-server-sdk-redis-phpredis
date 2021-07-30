@@ -1,6 +1,9 @@
 <?php
 namespace LaunchDarkly\Integrations;
 
+/**
+ * Integration with a Redis data store using the `phpredis` extension.
+ */
 class PHPRedis
 {
     /**
@@ -28,6 +31,10 @@ class PHPRedis
      */
     public static function featureRequester($options = array())
     {
+        if (!extension_loaded('redis')) {
+            throw new \RuntimeException("phpredis extension is required to use Integrations\\PHPRedis");
+        }
+
         return function ($baseUri, $sdkKey, $baseOptions) use ($options) {
             return new Impl\PHPRedisFeatureRequester($baseUri, $sdkKey, array_merge($baseOptions, $options));
         };
