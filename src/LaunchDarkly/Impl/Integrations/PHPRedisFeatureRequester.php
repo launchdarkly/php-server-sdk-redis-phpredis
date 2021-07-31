@@ -22,7 +22,7 @@ class PHPRedisFeatureRequester extends FeatureRequesterBase
         }
 
         $client = $this->_options['phpredis_client'] ?? null;
-        if ($client instanceof Redis) {
+        if ($client instanceof \Redis) {
             $this->_redisInstance = $client;
         } else {
             $this->_redisOptions = [
@@ -51,7 +51,7 @@ class PHPRedisFeatureRequester extends FeatureRequesterBase
      */
     protected function getConnection()
     {
-        if ($this->_redisInstance instanceof Redis) {
+        if ($this->_redisInstance instanceof \Redis) {
             return $this->_redisInstance;
         }
 
