@@ -8,7 +8,7 @@ The minimum version of the LaunchDarkly PHP SDK for use with this library is 4.0
 
 The minimum PHP version is 7.3.
 
-For more information, see the [SDK features guide](https://docs.launchdarkly.com/sdk/features/storing-data).
+For more information, see [our SDK documentation](https://docs.launchdarkly.com/sdk/features/storing-data).
 
 ## Quick setup
 
