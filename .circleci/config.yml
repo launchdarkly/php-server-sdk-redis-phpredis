@@ -1,0 +1,40 @@
+version: 2.1
+
+workflows:
+  workflow:
+    jobs:
+      - linux-test:
+          name: PHP 7.3
+          docker-image: cimg/php:7.3
+      - linux-test:
+          name: PHP 7.4
+          docker-image: cimg/php:7.4
+
+jobs:
+  linux-test:
+    parameters:
+      docker-image:
+        type: string
+
+    docker:
+      - image: <<parameters.docker-image>>
+      - image: redis
+
+    steps:
+      - checkout
+      - run:
+          name: install phpredis
+          command: |
+            yes '' | sudo pecl install -f redis || true
+            echo "extension=redis.so" | sudo tee -a $(php -r 'echo get_cfg_var("cfg_file_path");') >/dev/null
+      - run:
+          name: install dependencies
+          command: composer install --no-progress
+      - run: mkdir -p ./phpunit
+      - run:
+          name: run tests
+          command: php vendor/bin/phpunit
+      - store_test_results:
+          path: ./phpunit
+      - store_artifacts:
+          path: ./phpunit
