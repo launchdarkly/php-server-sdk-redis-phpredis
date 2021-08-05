@@ -22,7 +22,7 @@ class PHPRedisFeatureRequester extends FeatureRequesterBase
         }
 
         $client = $this->_options['phpredis_client'] ?? null;
-        if ($client instanceof Redis) {
+        if ($client instanceof \Redis) {
             $this->_redisInstance = $client;
         } else {
             $this->_redisOptions = [
@@ -36,13 +36,13 @@ class PHPRedisFeatureRequester extends FeatureRequesterBase
     protected function readItemString(string $namespace, string $key): ?string
     {
         $redis = $this->getConnection();
-        return $redis->hget($namespace, $key);
+        return $redis->hget("$this->_prefix:$namespace", $key);
     }
 
     protected function readItemStringList(string $namespace): ?array
     {
         $redis = $this->getConnection();
-        $raw = $redis->hgetall($namespace);
+        $raw = $redis->hgetall("$this->_prefix:$namespace");
         return $raw ? array_values($raw) : null;
     }
 
@@ -51,7 +51,7 @@ class PHPRedisFeatureRequester extends FeatureRequesterBase
      */
     protected function getConnection()
     {
-        if ($this->_redisInstance instanceof Redis) {
+        if ($this->_redisInstance instanceof \Redis) {
             return $this->_redisInstance;
         }
 
@@ -62,7 +62,6 @@ class PHPRedisFeatureRequester extends FeatureRequesterBase
             $this->_redisOptions["timeout"],
             'launchdarkly/php-server-sdk-redis-phpredis'
         );
-        $redis->setOption(\Redis::OPT_PREFIX, "$this->_prefix:");	// use custom prefix on all keys
         return $this->_redisInstance = $redis;
     }
 }
