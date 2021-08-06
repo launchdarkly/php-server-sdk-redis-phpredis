@@ -4,7 +4,8 @@ publications:
 
 circleci:
   linux:
-    image: ldcircleci/ld-php-sdk-release:1  # built in sdks-ci-docker project, contains PHP 7.2 + phpDocumentor
+    image: ldcircleci/php-sdk-release:1  # built in sdks-ci-docker project, contains PHP 7.3 + phpDocumentor
 
 documentation:
   githubPages: true
+  title: LaunchDarkly PHP SDK phpredis integration
