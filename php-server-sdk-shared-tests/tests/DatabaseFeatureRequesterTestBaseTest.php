@@ -2,16 +2,16 @@
 
 namespace LaunchDarkly\SharedTest\Tests;
 
-use LaunchDarkly\FeatureFlag;
 use LaunchDarkly\FeatureRequester;
-use LaunchDarkly\Segment;
+use LaunchDarkly\Impl\Model\FeatureFlag;
+use LaunchDarkly\Impl\Model\Segment;
 use LaunchDarkly\SharedTest\DatabaseFeatureRequesterTestBase;
 
 class FakeDatabase
 {
 	public static $data = [];
 
-	public static function getItem($prefix, $namespace, $key)
+	public static function getItem(string $prefix, string $namespace, string $key): ?array
 	{
 		$dataSet = self::$data[$prefix] ?? null;
 		if ($dataSet) {
@@ -24,7 +24,7 @@ class FakeDatabase
 		return null;
 	}
 
-	public static function getAllItems($prefix, $namespace)
+	public static function getAllItems(string $prefix, string $namespace): array
 	{
 		$itemsOut = [];
 		$dataSet = self::$data[$prefix] ?? [];
@@ -35,7 +35,7 @@ class FakeDatabase
 		return $itemsOut;
 	}
 
-	public static function putSerializedItem($prefix, $namespace, $key, $json)
+	public static function putSerializedItem(string $prefix, string $namespace, string $key, string $json): void
 	{
 		if (!isset(self::$data[$prefix])) {
     		self::$data[$prefix] = [];
@@ -56,7 +56,7 @@ class FakeDatabaseFeatureRequester implements \LaunchDarkly\FeatureRequester
 		$this->prefix = $prefix;
 	}
 
-	public function getFeature($key)
+	public function getFeature(string $key): ?FeatureFlag
 	{
 		$json = FakeDatabase::getItem($this->prefix, 'features', $key);
 		if ($json) {
@@ -66,7 +66,7 @@ class FakeDatabaseFeatureRequester implements \LaunchDarkly\FeatureRequester
 		return null;
 	}
 
-    public function getSegment($key)
+    public function getSegment(string $key): ?Segment
     {
     	$json = FakeDatabase::getItem($this->prefix, 'segments', $key);
 		if ($json) {
@@ -76,7 +76,7 @@ class FakeDatabaseFeatureRequester implements \LaunchDarkly\FeatureRequester
 		return null;
     }
 
-    public function getAllFeatures()
+    public function getAllFeatures(): array
     {
     	$jsonList = FakeDatabase::getAllItems($this->prefix, 'features');
     	$itemsOut = [];

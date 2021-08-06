@@ -2,15 +2,15 @@
 
 namespace LaunchDarkly\SharedTest;
 
-use LaunchDarkly\FeatureFlag;
 use LaunchDarkly\FeatureRequester;
-use LaunchDarkly\Segment;
+use LaunchDarkly\Impl\Model\FeatureFlag;
+use LaunchDarkly\Impl\Model\Segment;
 use PHPUnit\Framework\TestCase;
 
 /**
  * A base class providing standardized PHPUnit tests for database integrations.
  */
-class DatabaseFeatureRequesterTestBase extends \PHPUnit\Framework\TestCase
+class DatabaseFeatureRequesterTestBase extends TestCase
 {
     const TEST_PREFIX = 'testprefix';
 
