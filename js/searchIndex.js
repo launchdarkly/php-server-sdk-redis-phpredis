@@ -16,24 +16,14 @@ Search.appendIndex(
             "summary": "",
             "url": "namespaces/default.html"
         },                {
-            "fqsen": "\\LaunchDarkly\\Impl\\Integrations",
+            "fqsen": "\\LaunchDarkly\\Integrations",
             "name": "Integrations",
             "summary": "",
-            "url": "namespaces/launchdarkly-impl-integrations.html"
-        },                {
-            "fqsen": "\\LaunchDarkly\\Impl",
-            "name": "Impl",
-            "summary": "",
-            "url": "namespaces/launchdarkly-impl.html"
+            "url": "namespaces/launchdarkly-integrations.html"
         },                {
             "fqsen": "\\LaunchDarkly",
             "name": "LaunchDarkly",
             "summary": "",
             "url": "namespaces/launchdarkly.html"
-        },                {
-            "fqsen": "\\LaunchDarkly\\Integrations",
-            "name": "Integrations",
-            "summary": "",
-            "url": "namespaces/launchdarkly-integrations.html"
         }            ]
 );
