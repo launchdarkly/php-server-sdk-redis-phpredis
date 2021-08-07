@@ -3,10 +3,6 @@
         {
             "type": "path",
             "url": "php-server-sdk-shared-tests"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/launchdarkly/php-server-sdk-private.git"
         }
     ],
     "name": "launchdarkly/server-sdk-redis-phpredis",
@@ -25,7 +21,7 @@
     ],
     "require": {
         "php": ">=7.3",
-        "launchdarkly/server-sdk": "4.0.x-dev"
+        "launchdarkly/server-sdk": "^4"
     },
     "require-dev": {
         "launchdarkly/server-sdk-shared-tests": "dev-master",
