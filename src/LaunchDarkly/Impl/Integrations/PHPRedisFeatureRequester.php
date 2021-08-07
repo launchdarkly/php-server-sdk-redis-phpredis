@@ -3,6 +3,9 @@ namespace LaunchDarkly\Impl\Integrations;
 
 use LaunchDarkly\Impl\Integrations\FeatureRequesterBase;
 
+/**
+ * @internal
+ */
 class PHPRedisFeatureRequester extends FeatureRequesterBase
 {
     /** @var array */

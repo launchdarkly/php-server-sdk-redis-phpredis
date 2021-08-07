@@ -4,5 +4,6 @@ composer.phar
 .php_cs.cache
 composer.lock
 docs/build
+docs/.phpdoc
 phpunit/
 .phpunit.result.cache
