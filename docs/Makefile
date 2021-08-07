@@ -9,6 +9,7 @@ html:
 	$(PHPDOCUMENTOR) \
 		-d $(SOURCE_DIR)/src \
 		-t build/html \
+		--ignore LaunchDarkly/Impl/ \
 		--visibility public \
 		--defaultpackagename "SDK" \
 		--title "${LD_RELEASE_DOCS_TITLE} ${LD_RELEASE_VERSION}"
