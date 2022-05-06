@@ -24,7 +24,7 @@
         "launchdarkly/server-sdk": "^4"
     },
     "require-dev": {
-        "launchdarkly/server-sdk-shared-tests": "dev-master",
+        "launchdarkly/server-sdk-shared-tests": "@dev",
         "phpunit/phpunit": "^9"
     },
     "autoload": {
