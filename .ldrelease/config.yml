@@ -7,6 +7,8 @@ publications:
 jobs:
   - template:
       name: php
+      skip:
+        - test  # don't try to run unit tests in the Releaser environment, since they require a database
 
 documentation:
   gitHubPages: true
