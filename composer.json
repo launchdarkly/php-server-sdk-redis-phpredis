@@ -1,8 +1,8 @@
 {
     "repositories": [
         {
-            "type": "path",
-            "url": "php-server-sdk-shared-tests"
+            "type": "vcs",
+            "url": "https://github.com/launchdarkly/php-server-sdk-shared-tests"
         }
     ],
     "name": "launchdarkly/server-sdk-redis-phpredis",
@@ -24,7 +24,6 @@
         "launchdarkly/server-sdk": ">=4.0.0 <6.0.0"
     },
     "require-dev": {
-        "launchdarkly/server-sdk-shared-tests": "@dev",
         "phpunit/phpunit": "^9"
     },
     "autoload": {

@@ -6,17 +6,22 @@ workflows:
       - linux-test:
           name: PHP 7.3
           docker-image: cimg/php:7.3
+          shared-tests: 4.x-dev
       - linux-test:
           name: PHP 7.4
           docker-image: cimg/php:7.4
+          shared-tests: 4.x-dev
       - linux-test:
           name: PHP 8.0
           docker-image: cimg/php:8.0
+          shared-tests: dev-main
 
 jobs:
   linux-test:
     parameters:
       docker-image:
+        type: string
+      shared-tests:
         type: string
 
     docker:
@@ -33,6 +38,9 @@ jobs:
       - run:
           name: install dependencies
           command: composer install --no-progress
+      - run:
+          name: require appropriate shared tests package
+          command: composer require --dev 'launchdarkly/server-sdk-shared-tests:<<parameters.shared-tests>>'
       - run: mkdir -p ./phpunit
       - run:
           name: run tests
