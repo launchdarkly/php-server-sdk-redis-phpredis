@@ -2,7 +2,6 @@
 
 namespace LaunchDarkly\Impl\Integrations\Tests;
 
-use LaunchDarkly\FeatureRequester;
 use LaunchDarkly\Impl\Integrations\PHPRedisFeatureRequester;
 use LaunchDarkly\Integrations\PHPRedis;
 use LaunchDarkly\SharedTest\DatabaseFeatureRequesterTestBase;
@@ -14,7 +13,7 @@ class PHPRedisFeatureRequesterWithClientTest extends DatabaseFeatureRequesterTes
 
     /** @var ClientInterface */
     private static $redisClient;
-    
+
     public static function setUpBeforeClass(): void
     {
         self::$redisClient = new \Redis();
@@ -48,8 +47,8 @@ class PHPRedisFeatureRequesterWithClientTest extends DatabaseFeatureRequesterTes
             self::$redisClient->del($key);
         }
     }
-    
-    protected function makeRequester($prefix): FeatureRequester
+
+    protected function makeRequester($prefix)
     {
         $factory = PHPRedis::featureRequester([
             'redis_prefix' => $prefix,
