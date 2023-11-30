@@ -1,6 +1,6 @@
 # LaunchDarkly Server-Side SDK for PHP - Redis integration with phpredis
 
-[![CircleCI](https://circleci.com/gh/launchdarkly/php-server-sdk-redis-phpredis.svg?style=svg)](https://circleci.com/gh/launchdarkly/php-server-sdk-redis-phpredis)
+[![Run CI](https://github.com/launchdarkly/php-server-sdk-redis-phpredis/actions/workflows/ci.yml/badge.svg)](https://github.com/launchdarkly/php-server-sdk-redis-phpredis/actions/workflows/ci.yml)
 [![Packagist](https://img.shields.io/packagist/v/launchdarkly/server-sdk-redis-phpredis.svg?style=flat-square)](https://packagist.org/packages/launchdarkly/server-sdk-redis-phpredis)
 [![Documentation](https://img.shields.io/static/v1?label=GitHub+Pages&message=API+reference&color=00add8)](https://launchdarkly.github.io/php-server-sdk-redis-phpredis)
 
