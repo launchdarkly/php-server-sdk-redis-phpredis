@@ -10,11 +10,10 @@ runs:
         phpdoc \
           -d src \
           -t "docs" \
-          --ignore Impl/ \
-          --ignore '*/Impl/' \
+          --ignore '**/Impl/' \
           --ignore-tags psalm-param \
           --ignore-tags psalm-var \
           --ignore-tags psalm-return \
           --visibility public \
           --defaultpackagename "LaunchDarkly" \
-          --title "LaunchDarkly PHP SDK phpredis integration"
+          --title "LaunchDarkly PHP SDK phpredis integration 1.2.0" # x-release-please-version
