@@ -66,12 +66,11 @@ class PHPRedisFeatureRequester extends FeatureRequesterBase
             $this->_redisOptions["timeout"],
             'launchdarkly/php-server-sdk-redis-phpredis'
         );
-        if (
-            $this->_redisOptions['password'] !== null &&
-            $this->_redisOptions['password' !== '']
-        ) {
+
+        if ($this->_redisOptions['password']) {
             $redis->auth($this->_redisOptions['password']);
         }
+
         return $this->_redisInstance = $redis;
     }
 }
