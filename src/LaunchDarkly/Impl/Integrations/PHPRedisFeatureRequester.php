@@ -31,7 +31,8 @@ class PHPRedisFeatureRequester extends FeatureRequesterBase
             $this->_redisOptions = [
                 "timeout" => $options['redis_timeout'] ?? 5,
                 "host" => $options['redis_host'] ?? 'localhost',
-                "port" => $options['redis_port'] ?? 6379
+                "port" => $options['redis_port'] ?? 6379,
+                "password" => $options['redis_password'] ?? null
             ];
         }
     }
@@ -65,6 +66,12 @@ class PHPRedisFeatureRequester extends FeatureRequesterBase
             $this->_redisOptions["timeout"],
             'launchdarkly/php-server-sdk-redis-phpredis'
         );
+        if (
+            $this->_redisOptions['password'] !== null &&
+            $this->_redisOptions['password' !== '']
+        ) {
+            $redis->auth($this->_redisOptions['password']);
+        }
         return $this->_redisInstance = $redis;
     }
 }

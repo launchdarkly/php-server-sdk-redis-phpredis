@@ -24,6 +24,7 @@ class PHPRedis
      * @param array $options  Configuration settings (can also be passed in the main client configuration):
      *   - `redis_host`: hostname of the Redis server; defaults to `localhost`
      *   - `redis_port`: port of the Redis server; defaults to 6379
+     *   - `redis_password`: password to auth against the Redis server; optional
      *   - `redis_timeout`: connection timeout in seconds; defaults to 5
      *   - `redis_prefix`: a string to be prepended to all database keys; corresponds to the prefix
      * setting in ld-relay
