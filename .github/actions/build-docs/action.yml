@@ -16,4 +16,4 @@ runs:
           --ignore-tags psalm-return \
           --visibility public \
           --defaultpackagename "LaunchDarkly" \
-          --title "LaunchDarkly PHP SDK phpredis integration 1.2.0" # x-release-please-version
+          --title "LaunchDarkly PHP SDK phpredis integration 1.3.0" # x-release-please-version
