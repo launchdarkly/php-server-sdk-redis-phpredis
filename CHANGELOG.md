@@ -2,6 +2,13 @@
 
 All notable changes to the project will be documented in this file. This project adheres to [Semantic Versioning](http://semver.org).
 
+## [1.3.1](https://github.com/launchdarkly/php-server-sdk-redis-phpredis/compare/1.3.0...1.3.1) (2024-10-11)
+
+
+### Miscellaneous Chores
+
+* Fix doc generation action ([#22](https://github.com/launchdarkly/php-server-sdk-redis-phpredis/issues/22)) ([d6ba2c9](https://github.com/launchdarkly/php-server-sdk-redis-phpredis/commit/d6ba2c9a6d6253edbd4c3276a186a52cdea53a5c))
+
 ## [1.3.0](https://github.com/launchdarkly/php-server-sdk-redis-phpredis/compare/1.2.0...1.3.0) (2024-10-10)
 
 
