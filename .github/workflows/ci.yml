@@ -22,38 +22,12 @@ jobs:
     strategy:
       matrix:
         include:
-          # 7.x configurations
-          - php-version: 7.3
-            use-lowest-dependencies: true
-            shared-test-version: 4.x-dev
-          - php-version: 7.3
-            use-lowest-dependencies: false
-            shared-test-version: 4.x-dev
-
-          - php-version: 7.4
-            use-lowest-dependencies: true
-            shared-test-version: 4.x-dev
-          - php-version: 7.4
-            use-lowest-dependencies: false
-            shared-test-version: 4.x-dev
-
-          # 8.0 configurations
-          - php-version: 8.0
-            use-lowest-dependencies: true
-            shared-test-version: 4.x-dev
-          - php-version: 8.0
-            use-lowest-dependencies: false
-            shared-test-version: 5.x-dev
-
           # 8.1 configurations
           - php-version: 8.1
             use-lowest-dependencies: true
-            shared-test-version: 4.x-dev
-          - php-version: 8.1
-            use-lowest-dependencies: false
             shared-test-version: 5.x-dev
           - php-version: 8.1
-            use-lowest-dependencies: false
+            use-lowest-dependencies: true
             shared-test-version: dev-main
 
           # 8.2 configurations
@@ -61,6 +35,14 @@ jobs:
             use-lowest-dependencies: false
             shared-test-version: 5.x-dev
           - php-version: 8.2
+            use-lowest-dependencies: false
+            shared-test-version: dev-main
+
+          # 8.3 configurations
+          - php-version: 8.3
+            use-lowest-dependencies: false
+            shared-test-version: 5.x-dev
+          - php-version: 8.3
             use-lowest-dependencies: false
             shared-test-version: dev-main
 
