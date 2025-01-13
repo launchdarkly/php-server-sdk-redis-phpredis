@@ -39,7 +39,7 @@ class PHPRedis
             throw new \RuntimeException("phpredis extension is required to use Integrations\\PHPRedis");
         }
 
-        return function ($baseUri, $sdkKey, $baseOptions) use ($options) {
+        return function (string $baseUri, string $sdkKey, array $baseOptions) use ($options) {
             return new PHPRedisFeatureRequester($baseUri, $sdkKey, array_merge($baseOptions, $options));
         };
     }

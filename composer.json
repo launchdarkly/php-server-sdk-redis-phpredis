@@ -21,6 +21,7 @@
     ],
     "require": {
         "php": ">=8.1",
+        "ext-redis": "*",
         "launchdarkly/server-sdk": ">=6.3.0 <7.0.0"
     },
     "require-dev": {
