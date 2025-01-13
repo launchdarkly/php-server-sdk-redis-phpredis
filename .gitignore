@@ -7,3 +7,4 @@ docs/build
 docs/.phpdoc
 phpunit/
 .phpunit.result.cache
+.php-cs-fixer.cache
