@@ -1,7 +1,6 @@
 <?php
-namespace LaunchDarkly\Impl\Integrations;
 
-use LaunchDarkly\Impl\Integrations\FeatureRequesterBase;
+namespace LaunchDarkly\Impl\Integrations;
 
 /**
  * @internal

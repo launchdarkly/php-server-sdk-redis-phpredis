@@ -1,4 +1,5 @@
 <?php
+
 namespace LaunchDarkly\Integrations;
 
 use LaunchDarkly\Impl\Integrations\PHPRedisFeatureRequester;
@@ -32,7 +33,7 @@ class PHPRedis
      *   - `apc_expiration`: expiration time in seconds for local caching, if `APCu` is installed
      * @return mixed  an object to be stored in the `feature_requester` configuration property
      */
-    public static function featureRequester($options = array())
+    public static function featureRequester($options = [])
     {
         if (!extension_loaded('redis')) {
             throw new \RuntimeException("phpredis extension is required to use Integrations\\PHPRedis");
