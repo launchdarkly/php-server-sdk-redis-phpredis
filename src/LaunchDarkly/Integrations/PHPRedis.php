@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LaunchDarkly\Integrations;
 
 use LaunchDarkly\Impl\Integrations;
@@ -21,9 +23,11 @@ class PHPRedis
      * To use this method, you must have installed the `phpredis` extension. After calling this
      * method, store its return value in the `feature_requester` property of your client configuration:
      *
-     *     $fr = LaunchDarkly\Integrations\PHPRedis::featureRequester([ "redis_prefix" => "env1" ]);
-     *     $config = [ "feature_requester" => $fr ];
-     *     $client = new LDClient("sdk_key", $config);
+     * ```php
+     * $fr = LaunchDarkly\Integrations\PHPRedis::featureRequester(["prefix" => "env1"]);
+     * $config = ["feature_requester" => $fr];
+     * $client = new LDClient("sdk_key", $config);
+     * ```
      *
      * For more about using LaunchDarkly with databases, see the
      * [SDK reference guide](https://docs.launchdarkly.com/sdk/features/storing-data).
@@ -50,10 +54,12 @@ class PHPRedis
      *
      * After calling this method, store its return value in the `store` property of your Big Segment configuration:
      *
-     *     $store = LaunchDarkly\Integrations\PHPRedis::bigSegmentsStore(["prefix" => "env1"]);
-     *     $bigSegmentsConfig = new LaunchDarkly\BigSegmentConfig(store: $store);
-     *     $config = ["big_segments" => $bigSegmentsConfig];
-     *     $client = new LDClient("sdk_key", $config);
+     * ```php
+     * $store = LaunchDarkly\Integrations\PHPRedis::bigSegmentsStore(["prefix" => "env1"]);
+     * $bigSegmentsConfig = new LaunchDarkly\BigSegmentConfig(store: $store);
+     * $config = ["big_segments" => $bigSegmentsConfig];
+     * $client = new LDClient("sdk_key", $config);
+     * ```
      *
      * @param array<string,mixed> $options
      *   - `prefix`: a string to be prepended to all database keys; corresponds

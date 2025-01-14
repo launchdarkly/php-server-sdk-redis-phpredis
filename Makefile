@@ -7,7 +7,7 @@ help: #! Show this help message
 
 .PHONY: test
 test: #! Run unit tests
-	php -d xdebug.mode=coverage vendor/bin/phpunit
+	php vendor/bin/phpunit
 
 .PHONY: coverage
 coverage: #! Run unit tests with test coverage

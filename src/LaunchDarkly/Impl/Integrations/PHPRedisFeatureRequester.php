@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LaunchDarkly\Impl\Integrations;
 
 use LaunchDarkly\Integrations;
@@ -30,12 +32,24 @@ class PHPRedisFeatureRequester extends FeatureRequesterBase
 
     protected function readItemString(string $namespace, string $key): ?string
     {
-        return $this->client->hget("$this->prefix:$namespace", $key);
+        /** @var string|false */
+        $result = $this->client->hget("$this->prefix:$namespace", $key);
+        if ($result === false) {
+            return null;
+        }
+
+        return $result;
     }
 
     protected function readItemStringList(string $namespace): ?array
     {
+        /** @var ?array<string, string>|false */
         $raw = $this->client->hgetall("$this->prefix:$namespace");
-        return $raw ? array_values($raw) : null;
+
+        if ($raw === null || $raw === false) {
+            return null;
+        }
+
+        return array_values($raw);
     }
 }
