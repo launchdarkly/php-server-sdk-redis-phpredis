@@ -2,13 +2,18 @@
 
 namespace LaunchDarkly\Integrations;
 
-use LaunchDarkly\Impl\Integrations\PHPRedisFeatureRequester;
+use LaunchDarkly\Impl\Integrations;
+use LaunchDarkly\Subsystems;
+use Psr\Log\LoggerInterface;
+use Redis;
 
 /**
  * Integration with a Redis data store using the `phpredis` extension.
  */
 class PHPRedis
 {
+    const DEFAULT_PREFIX = 'launchdarkly';
+
     /**
      * Configures an adapter for reading feature flag data from Redis using persistent connections.
      *
@@ -40,7 +45,23 @@ class PHPRedis
         }
 
         return function (string $baseUri, string $sdkKey, array $baseOptions) use ($options) {
-            return new PHPRedisFeatureRequester($baseUri, $sdkKey, array_merge($baseOptions, $options));
+            return new Integrations\PHPRedisFeatureRequester($baseUri, $sdkKey, array_merge($baseOptions, $options));
+        };
+    }
+
+    /**
+     * @param array<string,mixed> $options
+     *   - `prefix`: namespace prefix to add to all hash keys
+     * @return callable(LoggerInterface, array): Subsystems\BigSegmentsStore
+     */
+    public static function bigSegmentsStore(Redis $client, array $options = []): callable
+    {
+        if (!extension_loaded('redis')) {
+            throw new \RuntimeException("phpredis extension is required to use Integrations\\PHPRedis");
+        }
+
+        return function (LoggerInterface $logger, array $baseOptions) use ($client, $options): Subsystems\BigSegmentsStore {
+            return new Integrations\PHPRedisBigSegmentsStore($client, $logger, array_merge($baseOptions, $options));
         };
     }
 }
