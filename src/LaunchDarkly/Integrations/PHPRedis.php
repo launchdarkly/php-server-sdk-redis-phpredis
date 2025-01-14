@@ -46,6 +46,15 @@ class PHPRedis
     }
 
     /**
+     * Configures a big segments store instance backed by Redis.
+     *
+     * After calling this method, store its return value in the `store` property of your Big Segment configuration:
+     *
+     *     $store = LaunchDarkly\Integrations\PHPRedis::bigSegmentsStore(["prefix" => "env1"]);
+     *     $bigSegmentsConfig = new LaunchDarkly\BigSegmentConfig(store: $store);
+     *     $config = ["big_segments" => $bigSegmentsConfig];
+     *     $client = new LDClient("sdk_key", $config);
+     *
      * @param array<string,mixed> $options
      *   - `prefix`: a string to be prepended to all database keys; corresponds
      *   to the prefix setting in ld-relay
