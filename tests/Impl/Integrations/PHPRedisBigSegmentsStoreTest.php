@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace LaunchDarkly\Impl\Integrations\Tests\Impl\Integrations;
 
 use LaunchDarkly\Impl\Integrations\PHPRedisBigSegmentsStore;

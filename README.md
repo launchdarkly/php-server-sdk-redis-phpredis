@@ -6,9 +6,9 @@
 
 This library provides a Redis-backed data source for the [LaunchDarkly PHP SDK](https://github.com/launchdarkly/php-server-sdk), replacing the default behavior of querying the LaunchDarkly service endpoints. The underlying Redis client implementation is the [`phpredis`](https://github.com/phpredis/phpredis) extension. If you want to use the Predis package instead, see https://github.com/launchdarkly/php-server-sdk-redis-predis.
 
-The minimum version of the LaunchDarkly PHP SDK for use with this library is 4.0.0. In earlier versions of the SDK, the Redis integrations were bundled in the main SDK package.
+The minimum version of the LaunchDarkly PHP SDK for use with this library is 6.4.0.
 
-The minimum PHP version is 7.3.
+The minimum PHP version is 8.1.
 
 For more information, see [our SDK documentation](https://docs.launchdarkly.com/sdk/features/storing-data).
 
@@ -27,14 +27,12 @@ php composer.phar install launchdarkly/server-sdk-redis-phpredis --save
 3. In your SDK configuration code, configure the Redis integration:
 
 ```php
-    $fr = LaunchDarkly\Integrations\PHPRedis::featureRequester([
-        "prefix" => "my-key-prefix"
-    ]);
-    $config = [ "feature_requester" => $fr ];
+    $fr = LaunchDarkly\Integrations\PHPRedis::featureRequester(
+        $redisClient, ["prefix" => "my-key-prefix"]
+    );
+    $config = ["feature_requester" => $fr];
     $client = new LDClient("sdk_key", $config);
 ```
-
-By default, the store will try to connect to a local Redis instance on port 6379. You may specify an alternate configuration as described in the API documentation for `PHPRedis::featureRequester`. Make sure the `prefix` option corresponds to the key prefix that is being used by the Relay Proxy.
 
 ## About LaunchDarkly
 
