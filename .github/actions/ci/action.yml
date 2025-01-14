@@ -10,10 +10,6 @@ inputs:
     type: boolean
     required: false
     default: false
-  shared-test-version:
-    description: 'Which version of the shared test package should we required'
-    required: false
-    default: 4.x-dev
   token:
     description: 'Token used to prevent composer rate limiting'
     required: true
@@ -32,10 +28,6 @@ runs:
     - name: Install dependencies
       shell: bash
       run: composer install --no-progress
-
-    - name: Require appropriate shared tests package
-      shell: bash
-      run: composer require --dev 'launchdarkly/server-sdk-shared-tests:${{ inputs.shared-test-version }}'
 
     - name: Downgrade to lowest versions
       if: ${{ inputs.use-lowest-dependencies }}

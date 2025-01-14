@@ -23,29 +23,14 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          # 8.1 configurations
           - php-version: 8.1
             use-lowest-dependencies: true
-            shared-test-version: 5.x-dev
-          - php-version: 8.1
-            use-lowest-dependencies: true
-            shared-test-version: dev-main
 
-          # 8.2 configurations
           - php-version: 8.2
             use-lowest-dependencies: false
-            shared-test-version: 5.x-dev
-          - php-version: 8.2
-            use-lowest-dependencies: false
-            shared-test-version: dev-main
 
-          # 8.3 configurations
           - php-version: 8.3
             use-lowest-dependencies: false
-            shared-test-version: 5.x-dev
-          - php-version: 8.3
-            use-lowest-dependencies: false
-            shared-test-version: dev-main
 
     steps:
       - uses: actions/checkout@v4
@@ -56,5 +41,4 @@ jobs:
         with:
           php-version: ${{ matrix.php-version }}
           use-lowest-dependencies: ${{ matrix.use-lowest-dependencies }}
-          shared-test-version: ${{ matrix.shared-test-version }}
           token: ${{ secrets.GITHUB_TOKEN }}
