@@ -4,6 +4,7 @@ namespace LaunchDarkly\Integrations;
 
 use LaunchDarkly\Impl\Integrations;
 use LaunchDarkly\Subsystems;
+use LaunchDarkly\Subsystems\FeatureRequester;
 use Psr\Log\LoggerInterface;
 use Redis;
 
@@ -28,40 +29,33 @@ class PHPRedis
      * [SDK reference guide](https://docs.launchdarkly.com/sdk/features/storing-data).
      *
      * @param array $options  Configuration settings (can also be passed in the main client configuration):
-     *   - `redis_host`: hostname of the Redis server; defaults to `localhost`
-     *   - `redis_port`: port of the Redis server; defaults to 6379
-     *   - `redis_password`: password to auth against the Redis server; optional
-     *   - `redis_timeout`: connection timeout in seconds; defaults to 5
-     *   - `redis_prefix`: a string to be prepended to all database keys; corresponds to the prefix
-     * setting in ld-relay
-     *   - `phpredis_client`: an already-configured Redis client instance if you wish to reuse one
+     *   - `prefix`: a string to be prepended to all database keys; corresponds
+     *   to the prefix setting in ld-relay
      *   - `apc_expiration`: expiration time in seconds for local caching, if `APCu` is installed
-     * @return mixed  an object to be stored in the `feature_requester` configuration property
+     * @return callable(string, string, array): FeatureRequester  an object to be stored in the `feature_requester` configuration property
      */
-    public static function featureRequester($options = [])
+    public static function featureRequester(Redis $client, $options = []): callable
     {
         if (!extension_loaded('redis')) {
             throw new \RuntimeException("phpredis extension is required to use Integrations\\PHPRedis");
         }
 
-        return function (string $baseUri, string $sdkKey, array $baseOptions) use ($options) {
-            return new Integrations\PHPRedisFeatureRequester($baseUri, $sdkKey, array_merge($baseOptions, $options));
+        return function (string $baseUri, string $sdkKey, array $baseOptions) use ($client, $options): FeatureRequester {
+            return new Integrations\PHPRedisFeatureRequester($client, $baseUri, $sdkKey, array_merge($baseOptions, $options));
         };
     }
 
     /**
      * @param array<string,mixed> $options
-     *   - `prefix`: namespace prefix to add to all hash keys
-     * @return callable(LoggerInterface, array): Subsystems\BigSegmentsStore
+     *   - `prefix`: a string to be prepended to all database keys; corresponds
+     *   to the prefix setting in ld-relay
      */
-    public static function bigSegmentsStore(Redis $client, array $options = []): callable
+    public static function bigSegmentsStore(Redis $client, LoggerInterface $logger, array $options = []): Subsystems\BigSegmentsStore
     {
         if (!extension_loaded('redis')) {
             throw new \RuntimeException("phpredis extension is required to use Integrations\\PHPRedis");
         }
 
-        return function (LoggerInterface $logger, array $baseOptions) use ($client, $options): Subsystems\BigSegmentsStore {
-            return new Integrations\PHPRedisBigSegmentsStore($client, $logger, array_merge($baseOptions, $options));
-        };
+        return new Integrations\PHPRedisBigSegmentsStore($client, $logger, $options);
     }
 }
