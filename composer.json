@@ -22,7 +22,8 @@
     "require": {
         "php": ">=8.1",
         "ext-redis": "*",
-        "launchdarkly/server-sdk": ">=6.3.0 <7.0.0"
+        "launchdarkly/server-sdk": ">=6.4.0 <7.0.0",
+        "psr/log": "^3.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.68",

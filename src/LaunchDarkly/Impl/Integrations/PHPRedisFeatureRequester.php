@@ -2,6 +2,7 @@
 
 namespace LaunchDarkly\Impl\Integrations;
 
+use LaunchDarkly\Integrations;
 use Redis;
 
 /**
@@ -20,7 +21,7 @@ class PHPRedisFeatureRequester extends FeatureRequesterBase
         /** @var ?string **/
         $this->prefix = $options['redis_prefix'] ?? null;
         if ($this->prefix === null || $this->prefix === '') {
-            $this->prefix = 'launchdarkly';
+            $this->prefix = Integrations\PHPRedis::DEFAULT_PREFIX;
         }
 
         /** @var ?Redis */
