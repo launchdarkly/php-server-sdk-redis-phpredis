@@ -29,9 +29,6 @@ jobs:
           - php-version: 8.3
             use-lowest-dependencies: false
 
-          - php-version: 8.4
-            use-lowest-dependencies: false
-
     steps:
       - uses: actions/checkout@v4
 
