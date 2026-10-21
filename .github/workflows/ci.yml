@@ -23,13 +23,16 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - php-version: 8.1
+          - php-version: 8.2
             use-lowest-dependencies: true
 
-          - php-version: 8.2
+          - php-version: 8.3
             use-lowest-dependencies: false
 
-          - php-version: 8.3
+          - php-version: 8.4
+            use-lowest-dependencies: false
+
+          - php-version: 8.5
             use-lowest-dependencies: false
 
     steps:
