@@ -8,7 +8,7 @@ This library provides a Redis-backed data source for the [LaunchDarkly PHP SDK](
 
 The minimum version of the LaunchDarkly PHP SDK for use with this library is 6.4.0.
 
-The minimum PHP version is 8.1.
+The minimum PHP version is 8.2.
 
 For more information, see [our SDK documentation](https://docs.launchdarkly.com/sdk/features/storing-data).
 
